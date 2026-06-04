@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yield Bureau deployează infrastructură de calificare AI pentru companii EPC solare comerciale din România. Propunere PDF în 3 minute.">
+  <title>Yield Bureau — Infrastructură de Calificare Solară Comercială</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:   #0A0A0A;
+      --bg-surface:   #151515;
+      --bg-elevated:  #1C1C1C;
+      --text-primary: #F8F8F8;
+      --text-secondary: #A1A1AA;
+      --accent-orange: #FF6B35;
+      --accent-gold:   #F2C14E;
+      --border:        #2A2A2A;
+      --nav-h: 64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── Fade-in ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── Shared typography ── */
+    .section-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .section-headline {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Button base ── */
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 150ms;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    /* ─────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 48px;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      flex: 0 0 auto;
+    }
+    .nav-logo .bureau { color: var(--accent-orange); }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+      flex: 1 1 auto;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 150ms;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-right { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
+
+    .nav-cta {
+      background: var(--accent-orange);
+      color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 150ms;
+      flex-shrink: 0;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      color: var(--text-primary);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      flex-direction: column;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--border);
+      transition: color 150ms;
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--accent-orange); font-weight: 600; }
+    .mobile-menu a:hover { color: var(--text-primary); }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      background-color: var(--bg-primary);
+      background-image:
+        linear-gradient(rgba(255,107,53,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 65%;
+      top: 40%;
+      width: 640px;
+      height: 640px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse, rgba(255,107,53,0.10) 0%, rgba(255,107,53,0.03) 45%, transparent 70%);
+      animation: emberGlow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes emberGlow {
+      0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.18); }
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 55% 45%;
+      gap: 64px;
+      align-items: center;
+      padding: 80px 0;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-headline {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      color: var(--text-primary);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .hero-headline .gold { color: var(--accent-gold); }
+
+    .hero-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin-top: 24px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .btn-ghost {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 14px 0;
+      transition: color 150ms;
+    }
+    .btn-ghost:hover { color: var(--text-primary); text-decoration: underline; }
+
+    .hero-stats {
+      display: flex;
+      align-items: stretch;
+      margin-top: 48px;
+    }
+    .hero-stat {
+      padding: 0 28px;
+      border-right: 1px solid var(--border);
+    }
+    .hero-stat:first-child { padding-left: 0; }
+    .hero-stat:last-child  { border-right: none; }
+    .stat-value {
+      display: block;
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent-gold);
+      line-height: 1.2;
+    }
+    .stat-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 3px;
+    }
+
+    /* ── Pipeline diagram ── */
+    .pipeline {
+      padding: 24px 16px 24px 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .pipeline-nodes {
+      display: flex;
+      flex-direction: column;
+    }
+    .pipeline-node-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .pipeline-node {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      width: 100%;
+    }
+    .pipeline-node-title {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .pipeline-node-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 3px;
+    }
+    .pipeline-connector {
+      width: 2px;
+      height: 32px;
+      background: var(--border);
+      margin-left: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pipeline-connector::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--accent-orange);
+      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px var(--accent-orange);
+      animation: pipelinePulse 3s linear infinite;
+    }
+    /* Sequential stagger: connector 1 → 2 → 3 → 4 */
+    .pipeline-node-wrap:nth-child(1) .pipeline-connector::after { animation-delay: 0s; }
+    .pipeline-node-wrap:nth-child(2) .pipeline-connector::after { animation-delay: -2.25s; }
+    .pipeline-node-wrap:nth-child(3) .pipeline-connector::after { animation-delay: -1.5s; }
+    .pipeline-node-wrap:nth-child(4) .pipeline-connector::after { animation-delay: -0.75s; }
+
+    @keyframes pipelinePulse {
+      0%   { top: -8px; opacity: 0; }
+      4%   { top: -8px; opacity: 1; }
+      16%  { top: 32px; opacity: 0; }
+      100% { top: 32px; opacity: 0; }
+    }
+
+    /* ─────────────────────────────────────────
+       PROBLEM
+    ───────────────────────────────────────── */
+    .problem {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .problem-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin-top: 24px;
+      line-height: 1.7;
+    }
+    .problem-body p + p { margin-top: 16px; }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .comparison-card {
+      border-radius: 6px;
+      padding: 32px;
+    }
+    .comparison-card.bad  { background: var(--bg-surface); border: 1px solid #3A1A1A; }
+    .comparison-card.good { background: var(--bg-surface); border: 1px solid #1A3A1A; }
+
+    .comparison-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .comparison-header.bad  { color: #FF4444; }
+    .comparison-header.good { color: var(--accent-orange); }
+
+    .timeline-steps { display: flex; flex-direction: column; }
+    .timeline-step  { display: flex; gap: 16px; }
+
+    .timeline-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+    .timeline-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .bad  .timeline-dot { background: #FF4444; }
+    .good .timeline-dot { background: var(--accent-orange); }
+
+    .timeline-line {
+      width: 1px;
+      flex: 1;
+      min-height: 28px;
+      margin-top: 4px;
+    }
+    .bad  .timeline-line { border-left: 1px dashed rgba(255,68,68,0.3); }
+    .good .timeline-line { border-left: 1px dashed rgba(255,107,53,0.3); }
+
+    .timeline-content { padding-bottom: 24px; }
+    .timeline-step:last-child .timeline-content { padding-bottom: 0; }
+
+    .timeline-day {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .bad .timeline-day { color: #FF4444; }
+
+    .timeline-title {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       ARCHITECTURE
+    ───────────────────────────────────────── */
+    .architecture {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .modules-wrap {
+      display: flex;
+      align-items: stretch;
+      margin-top: 64px;
+      gap: 0;
+    }
+    .module-item {
+      flex: 1;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 28px 24px;
+    }
+    .module-item:first-child { border-radius: 6px 0 0 6px; }
+    .module-item:last-child  { border-radius: 0 6px 6px 0; }
+    .module-item + .module-item { border-left: none; }
+
+    .module-arrow-el {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-orange);
+      font-size: 16px;
+      width: 28px;
+      flex-shrink: 0;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .module-number {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent-orange);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .module-title {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .module-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       DEMO
+    ───────────────────────────────────────── */
+    .demo-section {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .demo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 64px;
+    }
+
+    .demo-form-box,
+    .demo-result-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+    }
+
+    .form-field { margin-bottom: 24px; }
+    .form-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 150ms;
+    }
+    .form-input::placeholder { color: var(--text-secondary); opacity: 0.7; }
+    .form-input:focus { border-color: var(--accent-orange); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent-orange);
+      color: #0A0A0A;
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 150ms;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+    .btn-submit.loading { animation: btnPulse 1s ease-in-out infinite; cursor: default; }
+    @keyframes btnPulse { 0%,100%{opacity:0.65;} 50%{opacity:1;} }
+
+    .demo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      gap: 16px;
+      text-align: center;
+    }
+    .demo-placeholder-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .demo-loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      gap: 16px;
+    }
+    .demo-loading.visible { display: flex; }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent-orange);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .demo-result-card { display: block; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes cardPulse { 0%{box-shadow:0 0 0 0 rgba(255,107,53,0);} 50%{box-shadow:0 0 0 8px rgba(255,107,53,0.35);} 100%{box-shadow:0 0 0 0 rgba(255,107,53,0);} }
+    .pulse-once { animation: cardPulse 0.3s ease-out forwards; }
+
+    .result-header {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-orange);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .result-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .result-row:last-of-type { border-bottom: none; }
+    .result-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .result-value {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .result-value.gold  { color: var(--accent-gold); }
+    .result-value .chk  { color: var(--accent-orange); }
+
+    .result-disclaimer {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       METRICS
+    ───────────────────────────────────────── */
+    .metrics {
+      background: var(--bg-surface);
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .metric-block {
+      text-align: center;
+      padding: 0 32px;
+      border-right: 1px solid var(--border);
+    }
+    .metric-block:last-child { border-right: none; }
+    .metric-number {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .metric-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 10px;
+    }
+
+    /* ─────────────────────────────────────────
+       PRICING
+    ───────────────────────────────────────── */
+    .pricing {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pricing-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .pricing-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+    }
+    .pricing-tag {
+      display: inline-block;
+      background: rgba(255,107,53,0.15);
+      color: var(--accent-orange);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      padding: 4px 10px;
+    }
+    .pricing-tier {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 16px;
+    }
+    .pricing-title {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 8px;
+      letter-spacing: -0.01em;
+    }
+    .pricing-setup {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .pricing-price-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      margin-top: 12px;
+    }
+    .pricing-price {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .pricing-period {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      padding-bottom: 8px;
+    }
+    .pricing-after {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      min-height: 18px;
+    }
+    .pricing-divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--accent-orange);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .btn-pricing {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--accent-orange);
+      color: #0A0A0A;
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 32px;
+      transition: opacity 150ms;
+    }
+    .btn-pricing:hover { opacity: 0.85; }
+
+    .pricing-note-global {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 24px;
+    }
+
+    /* ─────────────────────────────────────────
+       WHY
+    ───────────────────────────────────────── */
+    .why {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .pillar-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+    }
+    .pillar-symbol {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent-orange);
+      line-height: 1;
+    }
+    .pillar-title {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 16px;
+    }
+    .pillar-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-top: 12px;
+      line-height: 1.65;
+    }
+
+    /* ─────────────────────────────────────────
+       FINAL CTA
+    ───────────────────────────────────────── */
+    .final-cta {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-primary);
+      background-image:
+        linear-gradient(rgba(255,107,53,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,107,53,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 32px;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 800px;
+      height: 800px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse, rgba(255,107,53,0.08) 0%, rgba(255,107,53,0.02) 50%, transparent 70%);
+      animation: emberGlow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .final-cta-inner {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-orange);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .final-cta-headline {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      color: var(--text-primary);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+    }
+    .final-cta-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 24px auto 0;
+      line-height: 1.65;
+    }
+    .btn-cta-final {
+      display: inline-block;
+      background: var(--accent-orange);
+      color: #0A0A0A;
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 40px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 48px;
+      transition: opacity 150ms;
+    }
+    .btn-cta-final:hover { opacity: 0.85; }
+    .final-cta-note {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    /* ─────────────────────────────────────────
+       CALENDLY
+    ───────────────────────────────────────── */
+    .calendly-section {
+      background: var(--bg-primary);
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .calendly-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    footer {
+      background: var(--bg-primary);
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-wordmark {
+      font-family: 'General Sans', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .footer-wordmark .bureau { color: var(--accent-orange); }
+    .footer-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    .footer-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 150ms;
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* ─────────────────────────────────────────
+       MOBILE
+    ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+
+      /* Nav */
+      .nav-inner { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+
+      /* Sections */
+      .problem,
+      .architecture,
+      .demo-section,
+      .pricing,
+      .why,
+      .calendly-section { padding: 80px 0; }
+
+      /* Hero */
+      .hero { min-height: auto; padding-top: var(--nav-h); padding-bottom: 0; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; padding: 60px 0 80px; }
+      .hero-right { display: none; }
+      .hero-headline { font-size: 44px; }
+      .hero-stats { flex-wrap: wrap; gap: 0; }
+      .hero-stat { padding: 12px 0; border-right: none; border-bottom: 1px solid var(--border); flex: 0 0 50%; }
+      .hero-stat:nth-child(odd) { padding-right: 16px; }
+      .hero-stat:last-child { border-bottom: none; }
+
+      /* Section headlines */
+      .section-headline { font-size: 36px; }
+
+      /* Comparison */
+      .comparison-grid { grid-template-columns: 1fr; }
+
+      /* Architecture modules — horizontal scroll */
+      .modules-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 8px;
+        gap: 12px;
+        margin-top: 40px;
+      }
+      .modules-wrap::-webkit-scrollbar { display: none; }
+      .module-item {
+        min-width: 240px;
+        flex-shrink: 0;
+        border-radius: 6px !important;
+        border: 1px solid var(--border) !important;
+      }
+      .module-item + .module-item { border-left: 1px solid var(--border) !important; }
+      .module-arrow-el { display: none; }
+
+      /* Demo */
+      .demo-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      /* Metrics */
+      .metrics { padding: 60px 0; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .metric-block { padding: 24px 16px; border-bottom: 1px solid var(--border); }
+      .metric-block:nth-child(even) { border-right: none; }
+      .metric-block:nth-last-child(-n+2) { border-bottom: none; }
+      .metric-number { font-size: 48px; }
+
+      /* Pricing */
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-price { font-size: 48px; }
+
+      /* Pillars */
+      .pillars-grid { grid-template-columns: 1fr; }
+
+      /* Final CTA */
+      .final-cta-headline { font-size: 48px; }
+      .final-cta-body { font-size: 16px; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-right { align-items: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 36px; }
+      .section-headline { font-size: 30px; }
+      .final-cta-headline { font-size: 36px; }
+    }
+
+    /* ─────────────────────────────────────────
+       HOVER MAGNIFY + SIBLING DIM INTERACTION
+    ───────────────────────────────────────── */
+
+    /* Base transition on all interactive cards */
+    .comparison-card, .module-item, .pricing-card, .pillar-card {
+      transition:
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.55s ease,
+        box-shadow 0.65s ease;
+      cursor: default;
+    }
+
+    /* Hovered card lifts and scales */
+    .comparison-card:hover, .module-item:hover, .pricing-card:hover, .pillar-card:hover {
+      transform: scale(1.05) translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+      position: relative;
+    }
+
+    /* Modern browsers — sibling dimming via :has() */
+    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover),
+    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
+    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
+    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover) {
+      opacity: 0.55;
+      transform: scale(0.97);
+    }
+
+    /* JS fallback class for older browsers */
+    .comparison-card.is-dimmed, .module-item.is-dimmed, .pricing-card.is-dimmed, .pillar-card.is-dimmed {
+      opacity: 0.55;
+      transform: scale(0.97);
+    }
+
+    /* ─────────────────────────────────────────
+       HERO CURSOR-FOLLOWING RADIAL GLOW
+    ───────────────────────────────────────── */
+
+    /* ::after is already the ember glow animation — use ::before for cursor glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 107, 53, 0.07) 0%,
+        rgba(255, 107, 53, 0.03) 40%,
+        transparent 70%
+      );
+      pointer-events: none;
+      transition: background 0.15s ease;
+      z-index: 0;
+    }
+
+    /* Hero content sits above both glow layers */
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─────────────────────────────────────────
+       CTA BUTTON HOVER — SHIMMER + GLOW
+    ───────────────────────────────────────── */
+
+    .btn-primary, .btn-submit, .btn-pricing, .btn-cta-final {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before, .btn-submit::before, .btn-pricing::before, .btn-cta-final::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+      );
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before, .btn-submit:hover::before, .btn-pricing:hover::before, .btn-cta-final:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover, .btn-submit:hover, .btn-pricing:hover, .btn-cta-final:hover {
+      background: #FF8555;
+      box-shadow: 0 0 24px rgba(255, 107, 53, 0.45);
+      transform: translateY(-2px);
+      transition:
+        background 0.3s ease,
+        box-shadow 0.4s ease,
+        transform 0.3s ease;
+    }
+    .calendly-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: 0 24px;
+    }
+
+    #cal-embed-container {
+      min-height: 600px;
+      background: #151515;
+      border-radius: 8px;
+      border: 1px solid #2A2A2A;
+    }
+
+    #calendly {
+      background: #0A0A0A;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<nav id="mainNav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Yield<span class="bureau">.Bureau</span></a>
+      <ul class="nav-links">
+        <li><a href="#problema">Problemă</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#cum-functioneaza">Cum funcționează</a></li>
+        <li><a href="#preturi">Prețuri</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="#calendly" class="nav-cta">Rezervă Demo</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Deschide meniu" aria-expanded="false">
+          <svg id="iconMenu" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6"  x2="19" y2="6"/>
+            <line x1="3" y1="11" x2="19" y2="11"/>
+            <line x1="3" y1="16" x2="19" y2="16"/>
+          </svg>
+          <svg id="iconClose" width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none" aria-hidden="true">
+            <line x1="4" y1="4"  x2="18" y2="18"/>
+            <line x1="18" y1="4" x2="4"  y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Meniu mobil">
+  <a href="#problema"        onclick="closeMobileMenu()">Problemă</a>
+  <a href="#demo"            onclick="closeMobileMenu()">Demo</a>
+  <a href="#cum-functioneaza" onclick="closeMobileMenu()">Cum funcționează</a>
+  <a href="#preturi"         onclick="closeMobileMenu()">Prețuri</a>
+  <a href="#calendly"        onclick="closeMobileMenu()">Rezervă Demo →</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Left -->
+      <div class="hero-left">
+        <span class="hero-label">Infrastructură Solară Comercială</span>
+        <h1 class="hero-headline">
+          <span class="gold">180 de secunde</span><br>
+          de la lead la<br>propunere solară.
+        </h1>
+        <p class="hero-sub">
+          Yield Bureau deployează infrastructură de calificare AI pentru companii EPC solare comerciale din România. Propuneri complete branded înainte ca competitorul să facă primul apel.
+        </p>
+        <div class="hero-buttons">
+          <a href="#calendly" class="btn-primary">Rezervă Demo</a>
+          <a href="#demo" class="btn-ghost">Vezi calificarea live →</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-value">&lt; 180 sec</span>
+            <span class="stat-label">Livrare propunere</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-value">Zero</span>
+            <span class="stat-label">Intervenție umană</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-value">2 niveluri</span>
+            <span class="stat-label">De servicii</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right — Pipeline diagram -->
+      <div class="hero-right pipeline">
+        <div class="pipeline-nodes">
+
+          <div class="pipeline-node-wrap">
+            <div class="pipeline-node">
+              <div class="pipeline-node-title">Lead Input</div>
+              <div class="pipeline-node-desc">Adresă + consum lunar capturate</div>
+            </div>
+            <div class="pipeline-connector"></div>
+          </div>
+
+          <div class="pipeline-node-wrap">
+            <div class="pipeline-node">
+              <div class="pipeline-node-title">GIS Analysis</div>
+              <div class="pipeline-node-desc">Google Solar API — scanare satelitară acoperiș</div>
+            </div>
+            <div class="pipeline-connector"></div>
+          </div>
+
+          <div class="pipeline-node-wrap">
+            <div class="pipeline-node">
+              <div class="pipeline-node-title">Financial Model</div>
+              <div class="pipeline-node-desc">ROI, perioadă de recuperare, economii</div>
+            </div>
+            <div class="pipeline-connector"></div>
+          </div>
+
+          <div class="pipeline-node-wrap">
+            <div class="pipeline-node">
+              <div class="pipeline-node-title">Proposal Generation</div>
+              <div class="pipeline-node-desc">PDF branded compilat automat</div>
+            </div>
+            <div class="pipeline-connector"></div>
+          </div>
+
+          <div class="pipeline-node-wrap">
+            <div class="pipeline-node">
+              <div class="pipeline-node-title">CRM + Email</div>
+              <div class="pipeline-node-desc">Livrat, echipa de vânzări alertată</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PROBLEM
+════════════════════════════════════════ -->
+<section id="problema" class="problem fade-in">
+  <div class="container">
+    <span class="section-label">Problema</span>
+    <h2 class="section-headline" style="max-width:700px;">
+      EPC-ul cel mai rapid rareori câștigă.<br>Primul EPC câștigă aproape întotdeauna.
+    </h2>
+    <div class="problem-body">
+      <p>Când un proprietar de fabrică completează un formular de contact, intră imediat în competiție cu 3–4 firme concurente. Așteaptă 3–5 zile pentru o propunere. În acel timp, ceilalți au răspuns deja.</p>
+      <p>Fereastra de intenție este de maximum 48 de ore. Ghostingul, propunerile lente și lipsa de follow-up automat costă instalatorii sute de mii de euro în contracte comerciale ratate în fiecare an.</p>
+    </div>
+
+    <div class="comparison-grid">
+
+      <!-- Without -->
+      <div class="comparison-card bad fade-in">
+        <div class="comparison-header bad">Fără Yield Bureau</div>
+        <div class="timeline-steps">
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day">Ziua 0</div>
+              <div class="timeline-title">Formular completat</div>
+              <div class="timeline-desc">Prospectul trimite cererea de ofertă.</div>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day">Ziua 3–5</div>
+              <div class="timeline-title">Propunere trimisă</div>
+              <div class="timeline-desc">Echipa internă pregătește manual oferta. Timp pierdut, erori posibile.</div>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day">Ziua 7</div>
+              <div class="timeline-title">Contract pierdut</div>
+              <div class="timeline-desc">Prospectul a semnat deja cu un competitor mai rapid.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- With -->
+      <div class="comparison-card good fade-in">
+        <div class="comparison-header good">Cu Yield Bureau</div>
+        <div class="timeline-steps">
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day" style="color:var(--accent-orange)">Ziua 0</div>
+              <div class="timeline-title">Formular completat</div>
+              <div class="timeline-desc">Prospectul trimite adresa și consumul lunar.</div>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day" style="color:var(--accent-gold)">3 Minute</div>
+              <div class="timeline-title">Propunere livrată</div>
+              <div class="timeline-desc">PDF branded generat automat și trimis pe email. Zero intervenție umană.</div>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-spine">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-day" style="color:var(--accent-orange)">Aceeași zi</div>
+              <div class="timeline-title">Apel de vânzări programat</div>
+              <div class="timeline-desc">CRM-ul alertează echipa. Prospectul e cald — conversația poate începe.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ARCHITECTURE
+════════════════════════════════════════ -->
+<section id="cum-functioneaza" class="architecture fade-in">
+  <div class="container">
+    <span class="section-label">Arhitectura Sistemului</span>
+    <h2 class="section-headline">Cinci module. Zero intervenție umană.</h2>
+
+    <div class="modules-wrap">
+
+      <div class="module-item fade-in">
+        <div class="module-number">01</div>
+        <div class="module-title">Captare Date</div>
+        <p class="module-body">Adresele comerciale sunt transformate în coordonate geospațiale verificate.</p>
+      </div>
+
+      <div class="module-arrow-el">→</div>
+
+      <div class="module-item fade-in">
+        <div class="module-number">02</div>
+        <div class="module-title">Analiză GIS</div>
+        <p class="module-body">Geometria acoperișului, expunerea solară și capacitatea de producție, extrase automat prin Google Solar API.</p>
+      </div>
+
+      <div class="module-arrow-el">→</div>
+
+      <div class="module-item fade-in">
+        <div class="module-number">03</div>
+        <div class="module-title">Modelare Financiară</div>
+        <p class="module-body">ROI, perioadă de recuperare și proiecții de economii pe 20 de ani, calculate în timp real.</p>
+      </div>
+
+      <div class="module-arrow-el">→</div>
+
+      <div class="module-item fade-in">
+        <div class="module-number">04</div>
+        <div class="module-title">Generare Narativă</div>
+        <p class="module-body">Propuneri la nivel CFO generate de GPT-4o la Temperatura 0 — fără invenție, doar calcule reale.</p>
+      </div>
+
+      <div class="module-arrow-el">→</div>
+
+      <div class="module-item fade-in">
+        <div class="module-number">05</div>
+        <div class="module-title">Livrare Instant</div>
+        <p class="module-body">PDF branded trimis prospectului și alert CRM declanșat simultan. Sub 180 de secunde total.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     DEMO
+════════════════════════════════════════ -->
+<section id="demo" class="demo-section fade-in">
+  <div class="container">
+    <span class="section-label">Demo Live</span>
+    <h2 class="section-headline">Introduceți o adresă.<br>Primiți propunerea în 3 minute.</h2>
+    <p class="demo-sub">Testați sistemul cu orice adresă comercială din România.</p>
+
+    <div class="demo-grid">
+
+      <!-- Form -->
+      <div class="demo-form-box fade-in">
+        <form id="demoForm" onsubmit="handleDemo(event)" novalidate>
+          <div class="form-field">
+            <label class="form-label" for="demoAddress">Adresa proprietății</label>
+            <input
+              type="text"
+              id="demoAddress"
+              class="form-input"
+              placeholder="Str. Industriei 14, Cluj-Napoca"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="demoConsumption">Consum lunar estimat</label>
+            <input
+              type="text"
+              id="demoConsumption"
+              class="form-input"
+              placeholder="ex: 45.000 kWh / lună sau 28.000 lei / lună"
+              autocomplete="off"
+              required
+            />
+          </div>
+          <button type="submit" class="btn-submit" id="demoBtn">Generează propunere →</button>
+        </form>
+      </div>
+
+      <!-- Result -->
+      <div class="demo-result-box fade-in">
+
+        <div class="demo-result-card" id="demoCard">
+          <div class="result-header">ANALIZĂ PRELIMINARĂ — DEMONSTRAȚIE</div>
+          <div class="result-divider"></div>
+          <div class="result-row">
+            <span class="result-label">Proprietate analizată:</span>
+            <span class="result-value">Str. Industriei 14, Cluj-Napoca</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Suprafață acoperiș estimată:</span>
+            <span class="result-value">2.840 m²</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Capacitate instalată:</span>
+            <span class="result-value">420 kWp</span>
+          </div>
+          <div class="result-row" style="border-bottom:none;">
+            <span class="result-label">Economii anuale estimate:</span>
+            <span class="result-value gold">185.000 RON</span>
+          </div>
+          <div style="background:rgba(255,107,53,0.08);border-radius:4px;padding:12px 16px;margin-top:10px;">
+            <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-secondary);">PDF branded generat și <span style="color:var(--accent-orange);">livrat ✓</span></span>
+          </div>
+          <p class="result-disclaimer" style="margin-top:12px;text-align:center;">Demonstrație vizuală — sistemul live se activează după conectarea la Google Solar API.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     METRICS
+════════════════════════════════════════ -->
+<section class="metrics fade-in">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-block">
+        <div class="metric-number">180s</div>
+        <div class="metric-label">Livrare propunere</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-number">&gt;96%</div>
+        <div class="metric-label">Marjă infrastructură</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-number">~€20</div>
+        <div class="metric-label">Cost per client / lună</div>
+      </div>
+      <div class="metric-block">
+        <div class="metric-number">24/7</div>
+        <div class="metric-label">Calificare automată</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PRICING
+════════════════════════════════════════ -->
+<section id="preturi" class="pricing fade-in">
+  <div class="container">
+    <span class="section-label">Prețuri</span>
+    <h2 class="section-headline" style="max-width:700px;">
+      Structurat pe valoarea unui contract solar comercial, nu pe ore.
+    </h2>
+    <p class="pricing-sub">Un singur contract comercial solar acoperă investiția pe tot anul.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Tier 1 -->
+      <div class="pricing-card fade-in">
+        <div class="pricing-tag">Cel mai popular</div>
+        <span class="pricing-tier">Tier 1</span>
+        <div class="pricing-title">Speed-to-Lead Engine</div>
+        <div class="pricing-setup">Setup inițial: 800 – 1.500 EUR</div>
+        <div class="pricing-price-row">
+          <div class="pricing-price">€499</div>
+          <div class="pricing-period">/lună</div>
+        </div>
+        <div class="pricing-after">după prima lună</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Integrare completă Google Solar API</li>
+          <li>Generator PDF branded</li>
+          <li>Alertă HubSpot CRM la fiecare lead</li>
+          <li>Livrare propunere în &lt; 3 minute</li>
+          <li>Zero middleware terț</li>
+          <li>Sesiune onboarding + training echipă vânzări</li>
+        </ul>
+        <a href="#calendly" class="btn-pricing">Rezervă implementarea →</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="pricing-card fade-in">
+        <div class="pricing-tag">ROI maxim</div>
+        <span class="pricing-tier">Tier 2</span>
+        <div class="pricing-title">Database Reactivation Machine</div>
+        <div class="pricing-setup">Setup inițial: 2.000 – 3.000 EUR</div>
+        <div class="pricing-price-row">
+          <div class="pricing-price">€899</div>
+          <div class="pricing-period">/lună</div>
+        </div>
+        <div class="pricing-after">&nbsp;</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Tot ce include Tier 1</li>
+          <li>Reactivare bază de date lead-uri reci (24 luni)</li>
+          <li>Secvență multi-canal automată de reactivare</li>
+          <li>Scor GIS actualizat pe adrese istorice</li>
+          <li>Raport lunar de performanță pipeline</li>
+        </ul>
+        <a href="#calendly" class="btn-pricing">Rezervă implementarea →</a>
+      </div>
+
+    </div>
+    <p class="pricing-note-global">Prețuri exprimate în EUR. Facturare în RON la cursul BNR din ziua emiterii.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     WHY YIELD BUREAU
+════════════════════════════════════════ -->
+<section class="why fade-in">
+  <div class="container">
+    <span class="section-label">De ce Yield Bureau</span>
+    <h2 class="section-headline">Viteză. Precizie. Infrastructură.</h2>
+
+    <div class="pillars-grid">
+      <div class="pillar-card fade-in">
+        <div class="pillar-symbol">01</div>
+        <div class="pillar-title">Viteză</div>
+        <p class="pillar-body">Propunere generată în sub 180 de secunde. Înainte ca un concurent să deschidă email-ul de notificare.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-symbol">02</div>
+        <div class="pillar-title">Precizie</div>
+        <p class="pillar-body">Date satelitare verificate, calcule financiare la Temperatura 0, fără estimări sau invenții. Fiecare propunere e auditabilă.</p>
+      </div>
+      <div class="pillar-card fade-in">
+        <div class="pillar-symbol">03</div>
+        <div class="pillar-title">Infrastructură</div>
+        <p class="pillar-body">Costuri fixe, arhitectură scalabilă, uptime 24/7. Nu vindem ore de consultanță — deployăm sisteme care rulează singure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+════════════════════════════════════════ -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="final-cta-label">Acționați Acum</span>
+    <h2 class="final-cta-headline">Lead-ul competitorului tău nu ar trebui să devină clientul lui.</h2>
+    <p class="final-cta-body">Vedeți o propunere solară comercială generată în sub 3 minute pe datele unui prospect real din portofoliul vostru.</p>
+    <a href="#calendly" class="btn-cta-final">Rezervă Demo Acum →</a>
+    <span class="final-cta-note">30 de minute. Fără slide-uri. Sistem live.</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CALENDLY
+════════════════════════════════════════ -->
+<section id="calendly" class="calendly-section fade-in">
+  <div class="container">
+    <span class="section-label">Rezervă Demo</span>
+    <h2 class="section-headline">30 de minute. Vedeți sistemul live pe datele voastre.</h2>
+    <p class="calendly-sub">Fără slide-uri de vânzări. Sistem live pe adresele din portofoliul vostru.</p>
+
+    <div class="calendly-wrapper">
+      <!-- Cal.com inline embed -->
+      <div id="cal-embed-container" style="width:100%;max-width:720px;margin:0 auto;border-radius:8px;overflow:hidden;border:1px solid #2A2A2A;"></div>
+
+      <script type="text/javascript">
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["-", namespace, ar]);
+              } else {
+                p(cal, ar);
+              }
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.eu/embed/embed.js", "init");
+
+        Cal("init", "30min", { origin: "https://cal.eu" });
+
+        Cal.ns["30min"]("inline", {
+          elementOrSelector: "#cal-embed-container",
+          calLink: "samu3l/30min",
+          layout: "month_view",
+        });
+
+        Cal.ns["30min"]("ui", {
+          theme: "dark",
+          styles: {
+            branding: {
+              brandColor: "#FF6B35",
+            },
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view",
+        });
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="footer-wordmark">Yield<span class="bureau">.Bureau</span></a>
+        <p class="footer-tagline">Automatizăm pipeline-ul solar comercial.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="#preturi">Prețuri</a>
+          <a href="#demo">Demo</a>
+          <a href="#calendly">Contact</a>
+        </div>
+        <p class="footer-copy">© 2026 Yield Bureau</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Hamburger
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu   = document.getElementById('mobileMenu');
+  const iconMenu     = document.getElementById('iconMenu');
+  const iconClose    = document.getElementById('iconClose');
+
+  hamburgerBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    iconMenu.style.display  = open ? 'none'  : 'block';
+    iconClose.style.display = open ? 'block' : 'none';
+    hamburgerBtn.setAttribute('aria-expanded', open);
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    iconMenu.style.display  = 'block';
+    iconClose.style.display = 'none';
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  // ── Demo form
+  function handleDemo(e) {
+    e.preventDefault();
+    const addr = document.getElementById('demoAddress').value.trim();
+    const cons = document.getElementById('demoConsumption').value.trim();
+    if (!addr || !cons) return;
+
+    const card = document.getElementById('demoCard');
+    card.classList.add('pulse-once');
+    setTimeout(() => card.classList.remove('pulse-once'), 300);
+  }
+
+  // ── IntersectionObserver fade-in
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => io.observe(el));
+
+  // ── Hero cursor-following radial glow
+  (function() {
+    if (window.matchMedia('(hover: none)').matches) return;
+
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty('--mouse-x', x + '%');
+      hero.style.setProperty('--mouse-y', y + '%');
+    });
+
+    hero.addEventListener('mouseleave', () => {
+      hero.style.setProperty('--mouse-x', '50%');
+      hero.style.setProperty('--mouse-y', '50%');
+    });
+  })();
+
+  // ── Hover magnify + sibling dim — JS fallback for browsers without :has()
+  (function() {
+    const hasSupport = CSS.supports('selector(:has(*))');
+
+    if (!hasSupport) {
+      const groups = [
+        document.querySelectorAll('.comparison-grid .comparison-card'),
+        document.querySelectorAll('.modules-wrap .module-item'),
+        document.querySelectorAll('.pricing-grid .pricing-card'),
+        document.querySelectorAll('.pillars-grid .pillar-card')
+      ];
+
+      groups.forEach(cards => {
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            cards.forEach(c => {
+              if (c !== card) c.classList.add('is-dimmed');
+            });
+          });
+          card.addEventListener('mouseleave', () => {
+            cards.forEach(c => c.classList.remove('is-dimmed'));
+          });
+        });
+      });
+    }
+
+    // Mobile: replace hover with scroll-trigger scale
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+    if (isTouchDevice) {
+      const allCards = document.querySelectorAll('.comparison-card, .module-item, .pricing-card, .pillar-card');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.transform = 'scale(1.03)';
+            entry.target.style.transition = 'transform 0.7s ease';
+            entry.target.style.opacity = '1';
+          } else {
+            entry.target.style.transform = 'scale(1)';
+            entry.target.style.opacity = '1';
+          }
+        });
+      }, { threshold: 0.6 });
+
+      allCards.forEach(card => observer.observe(card));
+    }
+  })();
+</script>
+</body>
+</html>

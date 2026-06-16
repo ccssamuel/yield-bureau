@@ -1599,56 +1599,6 @@
     }
 
     /* ─────────────────────────────────────────
-       HOVER MAGNIFY + SIBLING DIM INTERACTION
-    ───────────────────────────────────────── */
-
-    /* Base transition on all interactive cards */
-    .comparison-card,
-    .module-item,
-    .pricing-card,
-    .pillar-card,
-    .pipeline-node {
-      transition:
-        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 0.55s ease,
-        box-shadow 0.65s ease,
-        border-left-color 0.35s ease;
-      cursor: default;
-    }
-
-    /* Hovered card lifts and scales */
-    .comparison-card:hover,
-    .module-item:hover,
-    .pricing-card:hover,
-    .pillar-card:hover,
-    .pipeline-node:hover {
-      transform: scale(1.05) translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-      z-index: 2;
-      position: relative;
-    }
-
-    /* Modern browsers — sibling dimming via :has() */
-    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover),
-    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
-    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
-    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover),
-    .pipeline-nodes:has(.pipeline-node:hover) .pipeline-node:not(:hover) {
-      opacity: 0.55;
-      transform: scale(0.97);
-    }
-
-    /* JS fallback class for older browsers */
-    .comparison-card.is-dimmed,
-    .module-item.is-dimmed,
-    .pricing-card.is-dimmed,
-    .pillar-card.is-dimmed,
-    .pipeline-node.is-dimmed {
-      opacity: 0.55;
-      transform: scale(0.97);
-    }
-
-    /* ─────────────────────────────────────────
        HERO CURSOR-FOLLOWING RADIAL GLOW
     ───────────────────────────────────────── */
 
@@ -1742,33 +1692,28 @@
       background: #0A0A0A;
     }
 
-    /* ── Hover magnify fix: override fade-in transition conflicts ── */
-    .pricing-card.fade-in,
-    .pillar-card.fade-in,
-    .module-item.fade-in,
-    .comparison-card.fade-in {
-      transition:
-        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 0.55s ease,
-        box-shadow 0.65s ease !important;
+    .pricing-card, .pillar-card, .module-item, .comparison-card {
+      transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.55s ease, box-shadow 0.65s ease;
+      position: relative;
     }
 
-    .pricing-card.fade-in:hover,
-    .pillar-card.fade-in:hover,
-    .module-item.fade-in:hover,
-    .comparison-card.fade-in:hover {
+    .pricing-card:hover, .pillar-card:hover, .module-item:hover, .comparison-card:hover {
       transform: scale(1.05) translateY(-6px) !important;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+      box-shadow: 0 20px 60px rgba(255,107,53,0.15) !important;
       opacity: 1 !important;
-      z-index: 2;
-      position: relative;
+      z-index: 10;
     }
 
     .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
     .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover),
     .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
     .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover) {
-      opacity: 0.55 !important;
+      opacity: 0.5 !important;
+      transform: scale(0.97) !important;
+    }
+
+    .is-dimmed {
+      opacity: 0.5 !important;
       transform: scale(0.97) !important;
     }
   </style>
@@ -2414,76 +2359,28 @@
       });
     })();
 
-    // ── Hover magnify + sibling dim — JS fallback for browsers without :has()
-    (function () {
-      const hasSupport = CSS.supports('selector(:has(*))');
-      const isTouchDevice = window.matchMedia('(hover: none)').matches;
-
-      // Desktop only: JS fallback when :has() is unsupported
-      if (!hasSupport && !isTouchDevice) {
-        const groups = [
-          document.querySelectorAll('.comparison-grid .comparison-card'),
-          document.querySelectorAll('.modules-wrap .module-item'),
-          document.querySelectorAll('.pricing-grid .pricing-card'),
-          document.querySelectorAll('.pillars-grid .pillar-card'),
-          document.querySelectorAll('.pipeline-nodes .pipeline-node')
-        ];
-
-        groups.forEach(cards => {
-          cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-              cards.forEach(c => {
-                if (c !== card) c.classList.add('is-dimmed');
-              });
+    (function() {
+      var groups = [
+        document.querySelectorAll('.pricing-card'),
+        document.querySelectorAll('.pillar-card'),
+        document.querySelectorAll('.module-item'),
+        document.querySelectorAll('.comparison-card')
+      ];
+      groups.forEach(function(cards) {
+        if (!cards.length) return;
+        cards.forEach(function(card) {
+          card.addEventListener('mouseenter', function() {
+            cards.forEach(function(c) {
+              if (c !== card) c.classList.add('is-dimmed');
             });
-            card.addEventListener('mouseleave', () => {
-              cards.forEach(c => c.classList.remove('is-dimmed'));
+          });
+          card.addEventListener('mouseleave', function() {
+            cards.forEach(function(c) {
+              c.classList.remove('is-dimmed');
             });
           });
         });
-      }
-
-      // Mobile: scroll-triggered scale for cards, border highlight for pipeline nodes
-      if (isTouchDevice) {
-        const allCards = document.querySelectorAll(
-          '.comparison-card, .module-item, .pricing-card, .pillar-card'
-        );
-
-        const cardObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.transform = 'scale(1.03)';
-              entry.target.style.transition = 'transform 0.7s ease';
-              entry.target.style.opacity = '1';
-              entry.target.style.zIndex = '2';
-            } else {
-              entry.target.style.transform = 'scale(1)';
-              entry.target.style.transition = 'transform 0.7s ease';
-              entry.target.style.opacity = '1';
-              entry.target.style.zIndex = '1';
-            }
-          });
-        }, { threshold: 0.6 });
-
-        allCards.forEach(card => cardObserver.observe(card));
-
-        const pipelineNodes = document.querySelectorAll('.pipeline-nodes .pipeline-node');
-        const pipelineObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.borderLeft = '2px solid #FF6B35';
-              entry.target.style.background = '#1C1C1C';
-              entry.target.style.transition = 'border-color 0.5s ease, background 0.5s ease';
-            } else {
-              entry.target.style.borderLeft = '2px solid #2A2A2A';
-              entry.target.style.background = '';
-              entry.target.style.transition = 'border-color 0.5s ease, background 0.5s ease';
-            }
-          });
-        }, { threshold: 0.7 });
-
-        pipelineNodes.forEach(node => pipelineObserver.observe(node));
-      }
+      });
     })();
   </script>
 </body>

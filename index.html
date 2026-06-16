@@ -2387,8 +2387,10 @@
     // ── Hover magnify + sibling dim — JS fallback for browsers without :has()
     (function () {
       const hasSupport = CSS.supports('selector(:has(*))');
+      const isTouchDevice = window.matchMedia('(hover: none)').matches;
 
-      if (!hasSupport) {
+      // Desktop only: JS fallback when :has() is unsupported
+      if (!hasSupport && !isTouchDevice) {
         const groups = [
           document.querySelectorAll('.comparison-grid .comparison-card'),
           document.querySelectorAll('.modules-wrap .module-item'),
@@ -2411,13 +2413,13 @@
         });
       }
 
-      // Mobile: replace hover with scroll-trigger scale
-      const isTouchDevice = window.matchMedia('(hover: none)').matches;
-
+      // Mobile: scroll-triggered scale for cards, border highlight for pipeline nodes
       if (isTouchDevice) {
-        const allCards = document.querySelectorAll('.comparison-card, .module-item, .pricing-card, .pillar-card');
+        const allCards = document.querySelectorAll(
+          '.comparison-card, .module-item, .pricing-card, .pillar-card'
+        );
 
-        const observer = new IntersectionObserver((entries) => {
+        const cardObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.style.transform = 'scale(1.03)';
@@ -2426,15 +2428,16 @@
               entry.target.style.zIndex = '2';
             } else {
               entry.target.style.transform = 'scale(1)';
+              entry.target.style.transition = 'transform 0.7s ease';
               entry.target.style.opacity = '1';
               entry.target.style.zIndex = '1';
             }
           });
         }, { threshold: 0.6 });
 
-        allCards.forEach(card => observer.observe(card));
+        allCards.forEach(card => cardObserver.observe(card));
 
-        const pipelineNodes = document.querySelectorAll('.pipeline-node');
+        const pipelineNodes = document.querySelectorAll('.pipeline-nodes .pipeline-node');
         const pipelineObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -2444,6 +2447,7 @@
             } else {
               entry.target.style.borderLeft = '2px solid #2A2A2A';
               entry.target.style.background = '';
+              entry.target.style.transition = 'border-color 0.5s ease, background 0.5s ease';
             }
           });
         }, { threshold: 0.7 });

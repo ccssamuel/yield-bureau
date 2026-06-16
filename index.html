@@ -1741,6 +1741,36 @@
     #calendly {
       background: #0A0A0A;
     }
+
+    /* ── Hover magnify fix: override fade-in transition conflicts ── */
+    .pricing-card.fade-in,
+    .pillar-card.fade-in,
+    .module-item.fade-in,
+    .comparison-card.fade-in {
+      transition:
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.55s ease,
+        box-shadow 0.65s ease !important;
+    }
+
+    .pricing-card.fade-in:hover,
+    .pillar-card.fade-in:hover,
+    .module-item.fade-in:hover,
+    .comparison-card.fade-in:hover {
+      transform: scale(1.05) translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4) !important;
+      opacity: 1 !important;
+      z-index: 2;
+      position: relative;
+    }
+
+    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
+    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover),
+    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
+    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover) {
+      opacity: 0.55 !important;
+      transform: scale(0.97) !important;
+    }
   </style>
 </head>
 

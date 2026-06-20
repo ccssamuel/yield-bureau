@@ -435,33 +435,31 @@
     .pipeline-node {
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-left: 2px solid #2A2A2A;
       border-radius: 6px;
       padding: 12px 16px;
       width: 100%;
       position: relative;
       transition:
-        border-left-color 0.5s ease,
-        background 0.5s ease,
-        opacity 0.5s ease;
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.55s ease,
+        box-shadow 0.65s ease;
     }
 
     .pipeline-node:hover {
-      border-left: 2px solid #FF6B35 !important;
-      background: #1C1C1C !important;
-      transform: none !important;
-      box-shadow: none !important;
+      transform: scale(1.05) translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(255,107,53,0.15) !important;
       opacity: 1 !important;
+      z-index: 10;
     }
 
     .pipeline-nodes:has(.pipeline-node:hover) .pipeline-node:not(:hover) {
-      opacity: 0.45 !important;
-      transform: none !important;
+      opacity: 0.5 !important;
+      transform: scale(0.97) !important;
     }
 
     .pipeline-node.is-dimmed {
-      opacity: 0.45 !important;
-      transform: none !important;
+      opacity: 0.5 !important;
+      transform: scale(0.97) !important;
     }
 
     .pipeline-node-title {
@@ -2432,7 +2430,8 @@
           document.querySelectorAll('.comparison-grid .comparison-card'),
           document.querySelectorAll('.modules-wrap .module-item'),
           document.querySelectorAll('.pricing-grid .pricing-card'),
-          document.querySelectorAll('.pillars-grid .pillar-card')
+          document.querySelectorAll('.pillars-grid .pillar-card'),
+          document.querySelectorAll('.pipeline-node')
         ];
 
         groups.forEach(cards => {

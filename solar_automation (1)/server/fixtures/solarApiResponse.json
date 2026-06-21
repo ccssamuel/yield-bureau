@@ -1,0 +1,412 @@
+{
+  "name": "buildings/ChIJrTLr55sBFQYRscM3gxgoMZE",
+  "center": {
+    "latitude": 37.4419,
+    "longitude": -122.143
+  },
+  "boundingBox": {
+    "sw": {
+      "latitude": 37.4419,
+      "longitude": -122.143
+    },
+    "ne": {
+      "latitude": 37.4419,
+      "longitude": -122.143
+    }
+  },
+  "imageryQuality": "HIGH",
+  "imageryDate": {
+    "year": 2023,
+    "month": 6,
+    "day": 15
+  },
+  "postalCode": "94043",
+  "administrativeArea": "CA",
+  "statisticalArea": "94043",
+  "regionCode": "US",
+  "solarPotential": {
+    "maxArrayPanelsCount": 26,
+    "maxArrayAreaMeters2": 52.8,
+    "maxSunshineHoursPerYear": 1600,
+    "carbonOffsetFactorKgPerMwh": 410,
+    "wholeRoofStats": {
+      "areaMeters2": 120.5,
+      "sunshineQuantiles": [
+        800,
+        900,
+        1000,
+        1100,
+        1200,
+        1300,
+        1400,
+        1500,
+        1600
+      ],
+      "groundFloorArea": 85.3
+    },
+    "roofSegmentStats": [
+      {
+        "azimuthDegrees": 180,
+        "pitchDegrees": 20,
+        "sunshineQuantiles": [
+          1200,
+          1300,
+        1400,
+        1500,
+        1600,
+        1700,
+        1800,
+        1900,
+        2000
+      ],
+        "areaMeters2": 52.8,
+        "sunshineHoursPerYear": 1600
+      }
+    ],
+    "panelCapacityWatts": 400,
+    "panelHeightMeters": 1.0,
+    "panelWidthMeters": 1.6,
+    "panelLifetimeYears": 25,
+    "inverterEfficiencyPercent": 97
+  },
+  "financialAnalyses": [
+    {
+      "monthlyBill": {
+        "currencyCode": "EUR",
+        "units": 100,
+        "nanos": 0
+      },
+      "panelConfigIndex": 0,
+      "financialDetails": {
+        "costOfElectricityWithoutSolar": {
+          "currencyCode": "EUR",
+          "units": 24000,
+          "nanos": 0
+        },
+        "costOfElectricityWithSolar": {
+          "currencyCode": "EUR",
+          "units": 2400,
+          "nanos": 0
+        },
+        "netMeteringCreditsUnderNem": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "solarInstallationCost": {
+          "currencyCode": "EUR",
+          "units": 18000,
+          "nanos": 0
+        },
+        "costOfElectricityWithoutSolarYear20": {
+          "currencyCode": "EUR",
+          "units": 28800,
+          "nanos": 0
+        },
+        "costOfElectricityWithSolarYear20": {
+          "currencyCode": "EUR",
+          "units": 2880,
+          "nanos": 0
+        }
+      },
+      "federalIncentive": {
+        "currencyCode": "USD",
+        "units": 5400,
+        "nanos": 0
+      },
+      "stateIncentive": {
+        "currencyCode": "USD",
+        "units": 0,
+        "nanos": 0
+      },
+      "utilityIncentive": {
+        "currencyCode": "USD",
+        "units": 0,
+        "nanos": 0
+      },
+      "initialAcKwhPerYear": 8000,
+      "remainingLifetimeUtilityBill": {
+        "currencyCode": "EUR",
+        "units": 2400,
+        "nanos": 0
+      },
+      "solarPercentage": 85,
+      "percentageExportedToGrid": 25,
+      "batteryCapacityWh": 0,
+      "cashPurchaseSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 12600,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 18000,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 5400,
+          "nanos": 0
+        },
+        "paybackYears": 7.5,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 21600,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 1680,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 25200,
+            "nanos": 0
+          }
+        }
+      },
+      "financedPurchaseSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 5400,
+          "nanos": 0
+        },
+        "paybackYears": 6.8,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 23400,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 1800,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 27000,
+            "nanos": 0
+          }
+        }
+      },
+      "leasingSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "paybackYears": 0,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 0,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 0,
+            "nanos": 0
+          }
+        }
+      }
+    },
+    {
+      "monthlyBill": {
+        "currencyCode": "EUR",
+        "units": 500,
+        "nanos": 0
+      },
+      "panelConfigIndex": 0,
+      "financialDetails": {
+        "costOfElectricityWithoutSolar": {
+          "currencyCode": "EUR",
+          "units": 120000,
+          "nanos": 0
+        },
+        "costOfElectricityWithSolar": {
+          "currencyCode": "EUR",
+          "units": 12000,
+          "nanos": 0
+        },
+        "netMeteringCreditsUnderNem": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "solarInstallationCost": {
+          "currencyCode": "EUR",
+          "units": 18000,
+          "nanos": 0
+        },
+        "costOfElectricityWithoutSolarYear20": {
+          "currencyCode": "EUR",
+          "units": 144000,
+          "nanos": 0
+        },
+        "costOfElectricityWithSolarYear20": {
+          "currencyCode": "EUR",
+          "units": 14400,
+          "nanos": 0
+        }
+      },
+      "federalIncentive": {
+        "currencyCode": "USD",
+        "units": 5400,
+        "nanos": 0
+      },
+      "stateIncentive": {
+        "currencyCode": "USD",
+        "units": 0,
+        "nanos": 0
+      },
+      "utilityIncentive": {
+        "currencyCode": "USD",
+        "units": 0,
+        "nanos": 0
+      },
+      "initialAcKwhPerYear": 8000,
+      "remainingLifetimeUtilityBill": {
+        "currencyCode": "EUR",
+        "units": 12000,
+        "nanos": 0
+      },
+      "solarPercentage": 85,
+      "percentageExportedToGrid": 25,
+      "batteryCapacityWh": 0,
+      "cashPurchaseSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 12600,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 18000,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 5400,
+          "nanos": 0
+        },
+        "paybackYears": 1.5,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 129600,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 8400,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 129600,
+            "nanos": 0
+          }
+        }
+      },
+      "financedPurchaseSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 5400,
+          "nanos": 0
+        },
+        "paybackYears": 1.2,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 135000,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 9000,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 135000,
+            "nanos": 0
+          }
+        }
+      },
+      "leasingSavings": {
+        "outOfPocketCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "upfrontCost": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "rebateValue": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "paybackYears": 0,
+        "cashPurchaseSavingsYear20": {
+          "currencyCode": "EUR",
+          "units": 0,
+          "nanos": 0
+        },
+        "savings": {
+          "savingsYear1": {
+            "currencyCode": "EUR",
+            "units": 0,
+            "nanos": 0
+          },
+          "savingsYear20": {
+            "currencyCode": "EUR",
+            "units": 0,
+            "nanos": 0
+          }
+        }
+      }
+    }
+  ]
+}

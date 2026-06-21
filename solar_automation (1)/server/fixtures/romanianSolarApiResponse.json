@@ -1,0 +1,53 @@
+{
+  "buildingInsights": {
+    "name": "projects/solar-123/buildingInsights/ChIJIQBpAG2ahEYRa5NpjTnnIQQ",
+    "center": {
+      "latitude": 44.4268,
+      "longitude": 26.1025
+    },
+    "boundingBox": {
+      "sw": {
+        "latitude": 44.4265,
+        "longitude": 26.1022
+      },
+      "ne": {
+        "latitude": 44.4271,
+        "longitude": 26.1028
+      }
+    },
+    "imageryDate": {
+      "year": 2023,
+      "month": 6,
+      "day": 15
+    },
+    "imageryQuality": "HIGH",
+    "postalCode": "010101",
+    "administrativeArea": "București",
+    "statisticalArea": "Sector 1",
+    "regionCode": "RO",
+    "solarPotential": {
+      "maxArrayPanelsCount": 26,
+      "panelCapacityWatts": 400,
+      "yearlyEnergyDcKwh": 8000,
+      "yearlyEnergyAcKwh": 7600,
+      "yearlyFlooredEnergyAcKwh": 7400,
+      "maxSunshineHoursPerYear": 1600,
+      "carbonOffsetFactorKgPerMwh": 450,
+      "wholeRoofStats": {
+        "areaMeters2": 120.5,
+        "sunshineQuantiles": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+        "groundAreaMeters2": 150
+      },
+      "roofSegmentStats": [
+        {
+          "pitchDegrees": 25,
+          "azimuthDegrees": 180,
+          "sunshineQuantiles": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+          "panelCount": 26,
+          "yearlyEnergyDcKwh": 8000,
+          "areaMeters2": 104
+        }
+      ]
+    }
+  }
+}

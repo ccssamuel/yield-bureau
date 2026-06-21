@@ -2082,50 +2082,27 @@
         <div class="demo-form-box fade-in">
           <form id="demoForm" onsubmit="handleDemo(event)" novalidate>
             <div class="form-field">
-              <label class="form-label" for="demoAddress">Adresa proprietății</label>
-              <input type="text" id="demoAddress" class="form-input" placeholder="Str. Industriei 14, Cluj-Napoca"
-                autocomplete="off" required />
+              <label class="form-label" for="demoCompany">Numele companiei</label>
+              <input type="text" id="demoCompany" class="form-input" placeholder="ex: Electro Prod SRL" autocomplete="off" required />
             </div>
             <div class="form-field">
-              <label class="form-label" for="demoConsumption">Consum lunar estimat</label>
-              <input type="text" id="demoConsumption" class="form-input"
-                placeholder="ex: 45.000 kWh / lună sau 28.000 lei / lună" autocomplete="off" required />
+              <label class="form-label" for="demoAddress">Adresa proprietății</label>
+              <input type="text" id="demoAddress" class="form-input" placeholder="Str. Industriei 14, Cluj-Napoca" autocomplete="off" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="demoEmail">Email de contact</label>
+              <input type="email" id="demoEmail" class="form-input" placeholder="contact@companie.ro" autocomplete="off" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="demoMonthlyBill">Factură lunară medie (RON)</label>
+              <input type="number" id="demoMonthlyBill" class="form-input" placeholder="ex: 28000" min="1" autocomplete="off" required />
             </div>
             <button type="submit" class="btn-submit" id="demoBtn">Generează propunere →</button>
           </form>
         </div>
 
         <!-- Result -->
-        <div class="demo-result-box fade-in">
-
-          <div class="demo-result-card" id="demoCard">
-            <div class="result-header">ANALIZĂ PRELIMINARĂ — DEMONSTRAȚIE</div>
-            <div class="result-divider"></div>
-            <div class="result-row">
-              <span class="result-label">Proprietate analizată:</span>
-              <span class="result-value">Str. Industriei 14, Cluj-Napoca</span>
-            </div>
-            <div class="result-row">
-              <span class="result-label">Suprafață acoperiș estimată:</span>
-              <span class="result-value">2.840 m²</span>
-            </div>
-            <div class="result-row">
-              <span class="result-label">Capacitate instalată:</span>
-              <span class="result-value">420 kWp</span>
-            </div>
-            <div class="result-row" style="border-bottom:none;">
-              <span class="result-label">Economii anuale estimate:</span>
-              <span class="result-value gold">185.000 RON</span>
-            </div>
-            <div style="background:rgba(255,107,53,0.08);border-radius:4px;padding:12px 16px;margin-top:10px;">
-              <span style="font-family:'Inter',sans-serif;font-size:13px;color:var(--text-secondary);">PDF branded
-                generat și <span style="color:var(--accent-orange);">livrat ✓</span></span>
-            </div>
-            <p class="result-disclaimer" style="margin-top:12px;text-align:center;">Demonstrație vizuală — sistemul live
-              se activează după conectarea la Google Solar API.</p>
-          </div>
-
-        </div>
+        <div id="demoResult" class="demo-result-box fade-in"></div>
       </div>
     </div>
   </section>
@@ -2378,13 +2355,52 @@
     // ── Demo form
     function handleDemo(e) {
       e.preventDefault();
-      const addr = document.getElementById('demoAddress').value.trim();
-      const cons = document.getElementById('demoConsumption').value.trim();
-      if (!addr || !cons) return;
 
-      const card = document.getElementById('demoCard');
-      card.classList.add('pulse-once');
-      setTimeout(() => card.classList.remove('pulse-once'), 300);
+      const companyName = document.getElementById('demoCompany').value.trim();
+      const address = document.getElementById('demoAddress').value.trim();
+      const email = document.getElementById('demoEmail').value.trim();
+      const monthlyBill = parseFloat(document.getElementById('demoMonthlyBill').value.trim());
+
+      if (!companyName || !address || !email || !monthlyBill || monthlyBill <= 0) {
+        alert('Te rugăm să completezi toate câmpurile.');
+        return;
+      }
+
+      const btn = document.getElementById('demoBtn');
+      btn.disabled = true;
+      btn.textContent = 'Se procesează...';
+
+      const payload = {
+        companyName,
+        address,
+        email,
+        monthlyBill,
+        clientId: 'demo'
+      };
+
+      fetch('https://solar-automation-production.up.railway.app/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        btn.disabled = false;
+        btn.textContent = 'Generează propunere →';
+        if (data.success) {
+          document.getElementById('demoResult').innerHTML =
+            '<p style="color:#4CAF50;font-weight:600;">✓ Propunerea a fost trimisă pe email!</p>';
+        } else {
+          document.getElementById('demoResult').innerHTML =
+            '<p style="color:#FF6B35;">Eroare: ' + (data.error || 'Vă rugăm încercați din nou.') + '</p>';
+        }
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Generează propunere →';
+        document.getElementById('demoResult').innerHTML =
+          '<p style="color:#FF6B35;">Conexiune eșuată. Verificați adresa și încercați din nou.</p>';
+      });
     }
 
     // ── IntersectionObserver fade-in

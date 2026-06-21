@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Yield Bureau ajută companiile EPC solare să transforme un număr de telefon într-o propunere financiară completă în 3 minute. Calificare comercială instantă.">
-  <title>Yield Bureau — Propunere Solară în 3 Minute</title>
+    content="Yield Bureau deployează infrastructură de calificare AI pentru companii EPC solare din România. Propunere financiară completă în sub 3 minute, automat, fără intervenție umană.">
+  <title>Yield Bureau — Calificăm Lead-urile Comerciale în 180 de Secunde</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -438,6 +438,28 @@
       border-radius: 6px;
       padding: 12px 16px;
       width: 100%;
+      position: relative;
+      transition:
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.55s ease,
+        box-shadow 0.65s ease;
+    }
+
+    .pipeline-node:hover {
+      transform: scale(1.05) translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(255,107,53,0.15) !important;
+      opacity: 1 !important;
+      z-index: 10;
+    }
+
+    .pipeline-nodes:has(.pipeline-node:hover) .pipeline-node:not(:hover) {
+      opacity: 0.5 !important;
+      transform: scale(0.97) !important;
+    }
+
+    .pipeline-node.is-dimmed {
+      opacity: 0.5 !important;
+      transform: scale(0.97) !important;
     }
 
     .pipeline-node-title {
@@ -1595,51 +1617,6 @@
     }
 
     /* ─────────────────────────────────────────
-       HOVER MAGNIFY + SIBLING DIM INTERACTION
-    ───────────────────────────────────────── */
-
-    /* Base transition on all interactive cards */
-    .comparison-card,
-    .module-item,
-    .pricing-card,
-    .pillar-card {
-      transition:
-        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
-        opacity 0.55s ease,
-        box-shadow 0.65s ease;
-      cursor: default;
-    }
-
-    /* Hovered card lifts and scales */
-    .comparison-card:hover,
-    .module-item:hover,
-    .pricing-card:hover,
-    .pillar-card:hover {
-      transform: scale(1.05) translateY(-6px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-      z-index: 2;
-      position: relative;
-    }
-
-    /* Modern browsers — sibling dimming via :has() */
-    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover),
-    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
-    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
-    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover) {
-      opacity: 0.55;
-      transform: scale(0.97);
-    }
-
-    /* JS fallback class for older browsers */
-    .comparison-card.is-dimmed,
-    .module-item.is-dimmed,
-    .pricing-card.is-dimmed,
-    .pillar-card.is-dimmed {
-      opacity: 0.55;
-      transform: scale(0.97);
-    }
-
-    /* ─────────────────────────────────────────
        HERO CURSOR-FOLLOWING RADIAL GLOW
     ───────────────────────────────────────── */
 
@@ -1731,6 +1708,74 @@
 
     #calendly {
       background: #0A0A0A;
+    }
+
+    /* ─────────────────────────────────────────
+       HOVER MAGNIFY + SIBLING DIM INTERACTION
+    ───────────────────────────────────────── */
+
+    .comparison-card,
+    .module-item,
+    .pricing-card,
+    .pillar-card,
+    .pipeline-node {
+      cursor: default;
+    }
+
+    .comparison-card:hover,
+    .module-item:hover,
+    .pricing-card:hover,
+    .pillar-card:hover {
+      transform: scale(1.05) translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+      position: relative;
+    }
+
+    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover),
+    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
+    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
+    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover) {
+      opacity: 0.55;
+      transform: scale(0.97);
+    }
+
+    .comparison-card.is-dimmed,
+    .module-item.is-dimmed,
+    .pricing-card.is-dimmed,
+    .pillar-card.is-dimmed {
+      opacity: 0.55;
+      transform: scale(0.97);
+    }
+
+    /* ── Override fade-in transition conflicts ── */
+    .pricing-card.fade-in,
+    .pillar-card.fade-in,
+    .module-item.fade-in,
+    .comparison-card.fade-in {
+      transition:
+        transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.55s ease,
+        box-shadow 0.65s ease !important;
+    }
+
+    .pricing-card.fade-in:hover,
+    .pillar-card.fade-in:hover,
+    .module-item.fade-in:hover,
+    .comparison-card.fade-in:hover {
+      transform: scale(1.05) translateY(-6px) !important;
+      box-shadow: 0 20px 60px rgba(255,107,53,0.15) !important;
+      opacity: 1 !important;
+      z-index: 10;
+      position: relative;
+    }
+
+    .pricing-grid:has(.pricing-card:hover) .pricing-card:not(:hover),
+    .pillars-grid:has(.pillar-card:hover) .pillar-card:not(:hover),
+    .modules-wrap:has(.module-item:hover) .module-item:not(:hover),
+    .comparison-grid:has(.comparison-card:hover) .comparison-card:not(:hover) {
+      opacity: 0.55 !important;
+      transform: scale(0.97) !important;
     }
   </style>
 </head>
@@ -2378,13 +2423,15 @@
     // ── Hover magnify + sibling dim — JS fallback for browsers without :has()
     (function () {
       const hasSupport = CSS.supports('selector(:has(*))');
+      const isTouchDevice = window.matchMedia('(hover: none)').matches;
 
-      if (!hasSupport) {
+      if (!hasSupport && !isTouchDevice) {
         const groups = [
           document.querySelectorAll('.comparison-grid .comparison-card'),
           document.querySelectorAll('.modules-wrap .module-item'),
           document.querySelectorAll('.pricing-grid .pricing-card'),
-          document.querySelectorAll('.pillars-grid .pillar-card')
+          document.querySelectorAll('.pillars-grid .pillar-card'),
+          document.querySelectorAll('.pipeline-node')
         ];
 
         groups.forEach(cards => {
@@ -2401,26 +2448,45 @@
         });
       }
 
-      // Mobile: replace hover with scroll-trigger scale
-      const isTouchDevice = window.matchMedia('(hover: none)').matches;
-
       if (isTouchDevice) {
-        const allCards = document.querySelectorAll('.comparison-card, .module-item, .pricing-card, .pillar-card');
+        const allCards = document.querySelectorAll(
+          '.comparison-card, .module-item, .pricing-card, .pillar-card'
+        );
 
-        const observer = new IntersectionObserver((entries) => {
+        const cardObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.style.transform = 'scale(1.03)';
               entry.target.style.transition = 'transform 0.7s ease';
               entry.target.style.opacity = '1';
+              entry.target.style.zIndex = '2';
             } else {
               entry.target.style.transform = 'scale(1)';
+              entry.target.style.transition = 'transform 0.7s ease';
               entry.target.style.opacity = '1';
+              entry.target.style.zIndex = '1';
             }
           });
         }, { threshold: 0.6 });
 
-        allCards.forEach(card => observer.observe(card));
+        allCards.forEach(card => cardObserver.observe(card));
+
+        const pipelineNodes = document.querySelectorAll('.pipeline-nodes .pipeline-node');
+        const pipelineObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.borderLeft = '2px solid #FF6B35';
+              entry.target.style.background = '#1C1C1C';
+              entry.target.style.transition = 'border-color 0.5s ease, background 0.5s ease';
+            } else {
+              entry.target.style.borderLeft = '2px solid #2A2A2A';
+              entry.target.style.background = '';
+              entry.target.style.transition = 'border-color 0.5s ease, background 0.5s ease';
+            }
+          });
+        }, { threshold: 0.7 });
+
+        pipelineNodes.forEach(node => pipelineObserver.observe(node));
       }
     })();
   </script>

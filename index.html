@@ -2387,7 +2387,7 @@
       .then(data => {
         btn.disabled = false;
         btn.textContent = 'Generează propunere →';
-        if (data.success) {
+        if (data.success || data.status === 'success') {
           document.getElementById('demoResult').innerHTML =
             '<p style="color:#4CAF50;font-weight:600;">✓ Propunerea a fost trimisă pe email!</p>';
         } else {

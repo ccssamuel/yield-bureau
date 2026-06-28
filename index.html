@@ -1055,8 +1055,8 @@
     }
 
     .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      justify-content: center;
       gap: 24px;
       margin-top: 64px;
     }
@@ -1066,6 +1066,8 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 40px;
+      max-width: 560px;
+      width: 100%;
     }
 
     .pricing-tag {
@@ -2168,7 +2170,6 @@
 
         <!-- Tier 1 -->
         <div class="pricing-card fade-in">
-          <div class="pricing-tag">Cel mai popular</div>
           <span class="pricing-tier">Tier 1</span>
           <div class="pricing-title">Speed-to-Lead Engine</div>
           <div class="pricing-setup">Setup inițial: 800 – 1.500 EUR</div>
@@ -2189,27 +2190,6 @@
           <a href="#calendly" class="btn-pricing">Rezervă implementarea →</a>
         </div>
 
-        <!-- Tier 2 -->
-        <div class="pricing-card fade-in">
-          <div class="pricing-tag">ROI maxim</div>
-          <span class="pricing-tier">Tier 2</span>
-          <div class="pricing-title">Database Reactivation Machine</div>
-          <div class="pricing-setup">Setup inițial: 2.000 – 3.000 EUR</div>
-          <div class="pricing-price-row">
-            <div class="pricing-price">€899</div>
-            <div class="pricing-period">/lună</div>
-          </div>
-          <div class="pricing-after">&nbsp;</div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-features">
-            <li>Tot ce include Tier 1</li>
-            <li>Reactivare bază de date lead-uri reci (24 luni)</li>
-            <li>Secvență multi-canal automată de reactivare</li>
-            <li>Scor GIS actualizat pe adrese istorice</li>
-            <li>Raport lunar de performanță pipeline</li>
-          </ul>
-          <a href="#calendly" class="btn-pricing">Rezervă implementarea →</a>
-        </div>
 
       </div>
       <p class="pricing-note-global">Prețuri exprimate în EUR. Facturare în RON la cursul BNR din ziua emiterii.</p>
